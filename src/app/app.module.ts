@@ -12,6 +12,7 @@ import { UpdateTipoEvaComponent } from './components/tipo_eva/update-tipo-eva/up
 import { TipoEvaService } from './services/tipo-eva.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 import {from} from 'rxjs';
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {from} from 'rxjs';
     MatToolbarModule ,
     MatButtonModule ,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [
     TipoEvaService
