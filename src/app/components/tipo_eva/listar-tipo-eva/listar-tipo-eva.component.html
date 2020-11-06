@@ -1,21 +1,38 @@
-<table mat-table [dataSource]="tipoeva" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
+<<div class="center">
+  <button mat-icon-button>    
+    <a mat-icon-button routerLink="/tipoeva/add">
+      <mat-icon  class="add" color="accent">add_circle</mat-icon>
+    </a>
+  </button>
+</div>
+<nav class="center">
+  <table mat-table [dataSource]="tipoeva" class="mat-elevation-z8">
     <ng-container matColumnDef="ID_TIPO_EVA">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.ID_TIPO_EVA}} </td>
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let tipoeva"> {{tipoeva.ID_TIPO_EVA}} </td>
     </ng-container>
-  
-    <!-- Name Column -->
     <ng-container matColumnDef="NOMBRE">
-      <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
-      <td mat-cell *matCellDef="let element"> {{element.NOMBRE}} </td>
+      <th mat-header-cell *matHeaderCellDef>ROL</th>
+      <td mat-cell *matCellDef="let tipoeva"> {{tipoeva.NOMBRE}} </td>
     </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <ng-container matColumnDef="EDITAR">
+      <th mat-header-cell *matHeaderCellDef>Editar</th>
+      <td mat-cell *matCellDef="let tipoeva">
+        <a mat-icon-button [routerLink]="['/editar', tipoeva.ID_TIPO_EVA]">
+          <mat-icon color="primary">edit</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ELIMINAR">
+      <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let rol">
+        <button (click)="delTipoeva(rol.ID_TIPO_EVA)" mat-icon-button>
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="['ID_TIPO_EVA', 'NOMBRE', 'EDITAR', 'ELIMINAR']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['ID_TIPO_EVA', 'NOMBRE',
+      'EDITAR', 'ELIMINAR'];"></tr>
   </table>
-  
+</nav>
